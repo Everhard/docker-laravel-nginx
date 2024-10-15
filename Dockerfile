@@ -10,3 +10,11 @@ RUN apk add --no-cache \
 
 # Copy the nginx configuration into the image:
 COPY config/nginx/nginx.conf /etc/nginx/nginx.conf
+
+# Copy the default site configuration into the image:
+COPY config/nginx/default.conf /etc/nginx/http.d/default.conf
+
+# Expose port 80 for HTTP
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
